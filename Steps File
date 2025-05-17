@@ -1,0 +1,28 @@
+## 🛠️ How to Run This Project Locally
+
+### 📦 1. Clone the Repository
+
+git clone https://github.com/Nimish173/YoutubeVideoSummarizer.git
+cd YoutubeVideoSummarizer
+
+###🐍 2. Create and Activate Virtual Environment (optional but recommended)
+
+# Create virtual env
+python -m venv venv
+
+# Activate on Windows
+venv\Scripts\activate
+
+# Activate on Mac/Linux
+source venv/bin/activate
+
+###📥 3. Install Dependencies
+pip install -r requirements.txt
+
+###🛠️ 4. Set the Environment Variable
+Use the Service Account JSON File with google.generativeai
+Assuming you have the your-key.json file stored somewhere on your PC (e.g., in the project root or a safe location), here's what you should do:
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\your-key.json"
+
+###🧪 5. Run Your App
+python app.py

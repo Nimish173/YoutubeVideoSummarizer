@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summary Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+    }
+
+    .summary-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .button-group {
+      margin-top: 20px;
+    }
+
+    .button-group button,
+    .button-group a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button-group button:hover,
+    .button-group a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="summary-container">
+    <h2>Video Summary</h2>
+    <pre id="summaryText">{{ summary }}</pre>
+
+    <div class="button-group">
+      <button onclick="copySummary()">Copy Summary</button>
+      <button onclick="downloadSummary()">Download .txt</button>
+      <a href="/" class="button">Summarize Another</a>
+    </div>
+  </div>
+
+  <script>
+    function copySummary() {
+      const summary = document.getElementById('summaryText').innerText;
+      navigator.clipboard.writeText(summary).then(() => {
+        alert("Summary copied to clipboard!");
+      });
+    }
+
+    function downloadSummary() {
+      const text = document.getElementById('summaryText').innerText;
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "summary.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
